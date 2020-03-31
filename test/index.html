@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>CreateJS Inspector</title>
+		<style type="text/css">
+			html, body {
+				margin: 0;
+				padding: 0;
+				background-color: #222;
+			}
+			#wrapper {
+				text-align: center;
+			}
+			canvas {
+				border: 1px solid red;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<canvas width="512" height="512"></canvas>
+		</div>
+
+		<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+		<script>
+			createjs.Ticker.timingMode = createjs.Ticker.RAF;
+			createjs.Ticker.on('tick', function(event) {
+				stage.update(event);
+			});
+
+			var stage = new createjs.Stage(document.querySelector('canvas')).set({ name: 'stage-container' });
+
+			var con = new createjs.Container().set({ name: 'root-container' });
+			stage.addChild(con);
+
+			var c1 = new createjs.Shape(new createjs.Graphics().f('#f00').dc(0, 0, 24)).set({ x: 100, y: 100 });
+			var c2 = new createjs.Shape(new createjs.Graphics().f('#0c0').dr(-24, -24, 48, 48)).set({ x: 240, y: 120 });
+			con.addChild(c1, c2);
+
+			var con1 = new createjs.Container().set({ name: 'another-container' });
+			stage.addChild(con1);
+
+			var t = new createjs.Text("hello", "14px arial", "#fff");
+			con1.addChild(t);
+		</script>
+
+		<script src="../dist/createjs-inspector.js"></script>
+		<script>
+			Inspector.init({ createjs: createjs, stage: stage });
+		</script>
+	</body>
+</html>

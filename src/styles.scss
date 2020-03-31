@@ -1,0 +1,68 @@
+.inspector-box {
+	position: absolute;
+	font-family: 'arial';
+	font-size: 14;
+	font-weight: normal;
+	margin: 0;
+	padding: 8;
+	width: 360;
+	top: 0;
+	background-color: rgba(255, 255, 255, 0.4);
+
+	h4 {
+		margin: 4 0;
+		cursor: pointer;
+	}
+
+	/* hierarchy */
+	.hierarchy-content {
+		.nestable {
+			clear: both;
+			max-height: 420;
+			overflow-y: auto;
+			background-color: rgba(255, 255, 255, 0.4);
+
+			.nestable-item {
+				margin: 0;
+				padding: 0;
+
+				.nestable-list {
+					margin: 0;
+					padding: 0 0 0 18;
+				}
+			}
+
+			.nestable-item-name {
+				padding: 4;
+			}
+			.nestable-item-name.selected {
+				background-color: rgba(255, 255, 0, 0.4);
+			}
+		}
+	}
+
+	/* properties */
+	.properties-content {
+		dl {
+			margin: 0;
+			clear: left;
+	
+			dt {
+				float: left;
+				clear: left;
+				padding: 2px 0;
+				width: 160px;
+			}
+	
+			dd	{
+				float: left;
+				margin: 0;
+				width: 200px;
+	
+				input { 
+					margin: 2px 0; 
+				}
+			}
+		}
+	}
+}
