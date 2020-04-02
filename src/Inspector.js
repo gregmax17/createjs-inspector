@@ -89,8 +89,9 @@ class Inspector extends Component {
 	}
 
 	stageHandler = (event) => {
+		// possibly start dragging, set the drag point
 		if (event.type === "stagemousedown") {
-			// annoying input fields!
+			// annoying input fields
 			document.querySelectorAll("input").forEach(input => input.blur());
 			document.querySelectorAll("select").forEach(select => select.blur());
 
@@ -102,6 +103,7 @@ class Inspector extends Component {
 				drag.y = pt.y - displayObject.y;
 			}
 		}
+		// stops dragging
 		else {
 			drag.x = drag.y = null;
 		}
@@ -115,6 +117,7 @@ class Inspector extends Component {
 			return;
 		}
 
+		// direction of the mouse wheel
 		let dir = Math.sign(event.deltaY);
 
 		// over an element ;)
@@ -179,6 +182,7 @@ class Inspector extends Component {
 		let theKey = event.key.toLowerCase();
 		key[theKey] = event.type === "keydown";
 
+		// did we press an arrow key
 		if (event.type === "keydown" && key.d && event.key.search(/arrow/i) === 0) {
 			event.preventDefault();
 
@@ -195,6 +199,7 @@ class Inspector extends Component {
 				updateProperty(this.context, "y", ++displayObject.y);
 			}
 		}
+		// arrow key released
 		else if (event.type === "keyup" && event.target instanceof HTMLInputElement && /(arrowup|arrowdown)/.test(theKey)) {
 			event.preventDefault();
 

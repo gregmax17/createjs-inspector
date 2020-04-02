@@ -20,6 +20,9 @@ class DisplayObjectProvider extends React.Component {
 
 					// set it globally
 					window.$inspector = displayObject;
+
+					// TODO 
+					// make the hierarchy refresh
 				}
 			}}>
 				{this.props.children}

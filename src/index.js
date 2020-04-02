@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Inspector from "./Inspector";
 import { DisplayObjectProvider } from "./DisplayObjectContext";
 
+let refInspector;
+
 const init = (options) => {
 	console.log("stage: ", stage);
 
@@ -31,9 +33,15 @@ const init = (options) => {
 	// render it
 	ReactDOM.render((
 		<DisplayObjectProvider>
-			<Inspector stage={options.stage} createjs={options.createjs} />
+			<Inspector stage={options.stage} createjs={options.createjs} ref={(ref) => refInspector = ref} />
 		</DisplayObjectProvider>
 	), options.element);
 };
 
-export { init };
+// TODO
+// let the user add a sprite or bitmap reference
+const addResource = () => {
+	console.log(refInspector);
+};
+
+export { init, addResource };
